@@ -10,3 +10,7 @@ webapp-container:
 	@echo build webapp docker image
 	docker compose up --build -d webapp
 
+webversion := $(shell git describe) 
+tag:
+	
+	@echo verison is $(webversion)
