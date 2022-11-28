@@ -3,7 +3,7 @@ version: '3'
 services:
   webapp:
     build: ./webapp
-    image: webapp:v1.0
+    image: webapp:v0.1.1 
     ports:
       - 80:80
       - 443:443

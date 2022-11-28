@@ -6,11 +6,13 @@ webapp-build:
 	@echo start build webapp ...
 	cd webapp && pnpm build
 
-webapp-container:
+webapp-container: tag
 	@echo build webapp docker image
 	docker compose up --build -d webapp
 
+# get webapp git tag version and modify docker-compose file config
 webversion := $(shell git describe) 
 tag:
-	
 	@echo verison is $(webversion)
+	sed -r -i 's/(webapp:)(v.+)/\1$(webversion)/' ./docker-compose.yml
+
